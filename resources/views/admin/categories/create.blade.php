@@ -3,7 +3,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">Create a category</div>
     <div class="panel-body">
-      <form action="" method="POST">
+      <form action="{{route('category.store')}}" method="POST">
         {{csrf_field()}}
         <div class="form-group">
           <label for="name">Category Name</label>
