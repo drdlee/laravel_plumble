@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+  @include('layouts.errors')
   <div class="panel panel-default">
     <div class="panel-heading">Edit category : {{$category->name}}</div>
     <div class="panel-body">
