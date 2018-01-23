@@ -17,4 +17,8 @@ class Post extends Model
     public function category(){
       return $this->belongsTo('App\Category');
     }
+
+    public function getFeaturedAttribute($featured){ //this is called ACCESSOR
+      return asset($featured);
+    }
 }
