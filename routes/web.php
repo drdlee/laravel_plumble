@@ -47,4 +47,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
   Route::post('/tag/edit/{id}', 'TagsController@update')->name('tag.update');
   Route::get('/tag/delete/{id}', 'TagsController@destroy')->name('tag.delete');
 
+  Route::get('/user', 'UsersController@index')->name('user.index');
+  Route::get('/user/create', 'UsersController@create')->name('user.create');
+  Route::post('/user', 'UsersController@store')->name('user.store');
+
 });
