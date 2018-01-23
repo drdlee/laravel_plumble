@@ -13,6 +13,12 @@
           <label for="title">Title</label>
           <input type="text" name="title" class="form-control">
         </div>
+
+        <div class="form-group">
+          <label for="featured">Featured Image</label>
+          <input type="file" name="featured" class="form-control">
+        </div>
+
         <div class="form-group">
           <label for="category">Select a category</label>
           <select class="form-control" name="category_id">
@@ -21,10 +27,16 @@
             @endforeach
           </select>
         </div>
+
         <div class="form-group">
-          <label for="featured">Featured Image</label>
-          <input type="file" name="featured" class="form-control">
+          <label for="tags">Select tags</label>
+          @foreach($tags as $tag)
+            <div class="checkbox">
+              <label> <input type="checkbox" name="tags[]" value="{{$tag->id}}"> {{$tag->tag}} </label>
+            </div>
+          @endforeach
         </div>
+
         <div class="form-group">
           <label for="content">Content</label>
           <textarea name="content" class="form-control"></textarea>
