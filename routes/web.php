@@ -36,4 +36,12 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
   Route::get('/category/edit/{id}', 'CategoriesController@edit')->name('category.edit');
   Route::post('/category/edit/{id}', 'CategoriesController@update')->name('category.update');
   Route::get('/category/delete/{id}', 'CategoriesController@destroy')->name('category.delete');
+
+  Route::get('/tag', 'TagsController@index')->name('tag.index');
+  Route::get('/tag/create', 'TagsController@create')->name('tag.create');
+  Route::post('/tag', 'TagsController@store')->name('tag.store');
+  Route::get('/tag/edit/{id}', 'TagsController@edit')->name('tag.edit');
+  Route::post('/tag/edit/{id}', 'TagsController@update')->name('tag.update');
+  Route::get('/tag/delete/{id}', 'TagsController@destroy')->name('tag.delete');
+
 });
