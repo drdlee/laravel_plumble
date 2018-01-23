@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/test', function(){
+  return App\Post::find(4)->tags;
+});
 
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
   Route::get('/home', 'HomeController@index')->name('home');
