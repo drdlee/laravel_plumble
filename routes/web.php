@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/test', function(){
-  return App\Post::find(4)->tags;
+  return App\User::find(1)->profile;
 });
 
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
