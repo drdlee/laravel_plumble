@@ -14,6 +14,14 @@
           <input type="text" name="title" class="form-control">
         </div>
         <div class="form-group">
+          <label for="category">Select a category</label>
+          <select class="form-control" name="category_id">
+            @foreach ($categories as $category)
+              <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+          </select>
+        </div>
+        <div class="form-group">
           <label for="featured">Featured Image</label>
           <input type="file" name="featured" class="form-control">
         </div>
