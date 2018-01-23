@@ -16,7 +16,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('admin.posts.index')->with('posts', $posts);
     }
 
     /**
@@ -57,12 +58,13 @@ class PostsController extends Controller
           'title' => $request->title,
           'content' => $request->content,
           'featured' => 'uploads/posts/'.$featuredNewName,
-          'category_id' => $request->category_id
+          'category_id' => $request->category_id,
+          'slug' => str_slug($request->title)
         ]);
 
         Session::flash('success', 'Post created successfully.');
 
-        // return redirect()->route('post.index');
+        return redirect()->back();
     }
 
     /**
