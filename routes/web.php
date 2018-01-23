@@ -23,6 +23,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
   Route::get('/post/create', 'PostsController@create')->name('post.create');
   Route::post('/post', 'PostsController@store')->name('post.store');
   Route::get('/post', 'PostsController@index')->name('post.index');
+  Route::get('/post/edit/{id}', 'PostsController@edit')->name('post.edit');
+  Route::post('/post/edit/{id}', 'PostsController@update')->name('post.update');
   Route::get('/post/delete/{id}', 'PostsController@destroy')->name('post.delete');
   Route::get('/post/trashed', 'PostsController@trashed')->name('post.trashed');
   Route::get('/post/kill/{id}', 'PostsController@kill')->name('post.kill');
