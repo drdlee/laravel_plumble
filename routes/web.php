@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'FrontEndController@index')->name('index');
+Route::get('/post/{slug}', 'FrontEndController@singlePost')->name('singlePost');
 
 Auth::routes();
 

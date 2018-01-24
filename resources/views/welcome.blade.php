@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>{{ $setting->site_name }}</title>
+    <title>{{ $title }}</title>
 
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/fonts.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app/css/crumina-fonts.css')}}">
@@ -68,7 +68,7 @@
                             <div class="post__content-info">
 
                                     <h2 class="post__title entry-title text-center">
-                                        <a href="15_blog_details.html">{{ $latestPost->title }}</a>
+                                        <a href="{{route('singlePost', ['slug' => $latestPost->slug])}}">{{ $latestPost->title }}</a>
                                     </h2>
 
                                     <div class="post-additional-info">
@@ -124,7 +124,7 @@
                             <div class="post__content-info">
 
                                     <h2 class="post__title entry-title ">
-                                        <a href="15_blog_details.html">{{ $latest2->title }}</a>
+                                        <a href="{{route('singlePost', ['slug' => $latest2->slug])}}">{{ $latest2->title }}</a>
                                     </h2>
 
                                     <div class="post-additional-info">
@@ -186,7 +186,7 @@
                                     <div class="case-item__thumb">
                                         <img src="{{ $post->featured}}" alt="{{ $post->title }}">
                                     </div>
-                                    <h6 class="case-item__title"><a href="#">{{ $post->title }}</a></h6>
+                                    <h6 class="case-item__title"><a href="{{route('singlePost', ['slug' => $post->slug])}}">{{ $post->title }}</a></h6>
                                 </div>
                             </div>
                           @endforeach
@@ -216,7 +216,7 @@
                                     <div class="case-item__thumb">
                                         <img src="{{ $post->featured}}" alt="{{ $post->title }}">
                                     </div>
-                                    <h6 class="case-item__title"><a href="#">{{ $post->title }}</a></h6>
+                                    <h6 class="case-item__title"><a href="{{route('singlePost', ['slug' => $post->slug])}}">{{ $post->title }}</a></h6>
                                 </div>
                             </div>
                           @endforeach
@@ -250,9 +250,9 @@
                     </div>
 
                     <div class="images-block">
-                        <img src="app/img/subscr-gear.png" alt="gear" class="gear">
-                        <img src="app/img/subscr1.png" alt="mail" class="mail">
-                        <img src="app/img/subscr-mailopen.png" alt="mail" class="mail-2">
+                        <img src="{{asset('app/img/subscr-gear.png')}}" alt="gear" class="gear">
+                        <img src="{{asset('app/img/subscr1.png')}}" alt="mail" class="mail">
+                        <img src="{{asset('app/img/subscr-mailopen.png')}}" alt="mail" class="mail-2">
                     </div>
                 </div>
             </div>
