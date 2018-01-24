@@ -39,13 +39,25 @@
 
         <div class="form-group">
           <label for="content">Content</label>
-          <textarea name="content" class="form-control"></textarea>
+          <textarea name="content" class="form-control" id="content"></textarea>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-success">Submit</button>
         </div>
       </form>
     </div>
-
   </div>
+@endsection
+
+@section('style')
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" />
+@endsection
+
+@section('scripts')
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#content').summernote();
+    });
+  </script>
 @endsection
