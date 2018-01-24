@@ -23,10 +23,9 @@
                 @else
                   <a href="{{route('user.admin', ['id'=>$user->id])}}" class="btn btn-xs btn-success">make admin</a>
                 @endif
-                </td>
-                <td>
-                  {{-- <a href="{{route('post.edit', ['id'=> $post->id])}}" class="btn btn-xs btn-info">edit</a>
-                  <a href="{{route('post.delete', ['id'=> $post->id])}}" class="btn btn-xs btn-danger">trash</a> --}}
+                @if(Auth::id() !== $user->id)
+                  <a href="{{route('user.delete', ['id'=> $user->id])}}" class="btn btn-xs btn-danger">delete user</a>
+                @endif
                 </td>
               </tr>
             @endforeach
