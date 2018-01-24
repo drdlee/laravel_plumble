@@ -2,6 +2,7 @@
   <div class="col-md-4">
     <ul class="list-group">
       <li class="list-group-item"><a href="{{route('home')}}">Home</a></li>
+      <li class="list-group-item"><a href="{{route('user.profile')}}">My Profile</a></li>
       <li class="list-group-item"><a href="{{route('category.index')}}">Categories</a></li>
       <li class="list-group-item"><a href="{{route('tag.index')}}">Tags</a></li>
       <li class="list-group-item"><a href="{{route('post.index')}}">All Posts</a></li>

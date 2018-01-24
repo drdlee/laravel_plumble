@@ -3,15 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Profile;
+use Auth;
 use Session;
 
-class UsersController extends Controller
+class ProfilesController extends Controller
 {
-    public function __construct(){
-      $this->middleware('admin');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('admin.users.index')->with('users', $users);
+        return view('admin.users.profile')->with('user', Auth::user());
     }
 
     /**
@@ -30,7 +25,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        //
     }
 
     /**
@@ -41,23 +36,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-          'name' => 'required',
-          'email' => 'required|email'
-        ]);
-
-        $user = User::create([
-          'name' => $request->name,
-          'email' => $request->email,
-          'password' => bcrypt('password')
-        ]);
-
-        $profile = Profile::create([
-          'user_id' => $user->id,
-          'avatar' => 'uploads/avatars/avatar1.jpg'
-        ]);
-
-        return redirect()->route('user.index');
+        //
     }
 
     /**
@@ -89,9 +68,40 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request, [
+          'name' => 'required',
+          'email' => 'required|email',
+          'facebook' => 'required|url',
+          'youtube' => 'required|url',
+          'about' => 'required'
+        ]);
+
+        $user = Auth::user();
+
+        if ($request->hasFile('avatar')){
+          $avatar = $request->avatar;
+          $avatarNewName = time().'-'.$avatar->getClientOriginalName();
+          $avatar->move('uploads/avatars', $avatarNewName);
+          $user->profile->avatar = 'uploads/avatars/'.$avatarNewName;
+          $user->profile->save();
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->profile->facebook = $request->facebook;
+        $user->profile->youtube = $request->youtube;
+
+        $user->save();
+        $user->profile->save();
+
+        if($request->has('password')){
+          $user->password = bcrypt($request->password);
+        }
+
+        Session::flash('success', 'User profile updated.');
+        return redirect()->back();
     }
 
     /**
@@ -103,21 +113,5 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function makeAdmin($id){
-      $user = User::find($id);
-      $user->admin = 1;
-      $user->save();
-      Session::flash('success', 'User permission changed');
-      return redirect()->back();
-    }
-
-    public function notAdmin($id){
-      $user = User::find($id);
-      $user->admin = 0;
-      $user->save();
-      Session::flash('success', 'User permission changed');
-      return redirect()->back();
     }
 }

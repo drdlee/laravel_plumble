@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/test', function(){
-  return App\User::find(1)->profile;
+  return Auth::user();
 });
 
 Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
@@ -52,5 +52,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
   Route::post('/user', 'UsersController@store')->name('user.store');
   Route::get('/user/admin/{id}', 'UsersController@makeAdmin')->name('user.admin');
   Route::get('/user/not-admin/{id}', 'UsersController@notAdmin')->name('user.not.admin');
+
+  Route::get('/user/profile', 'ProfilesController@index')->name('user.profile');
+  Route::post('/user/profile', 'ProfilesController@update')->name('user.profile.update');
 
 });

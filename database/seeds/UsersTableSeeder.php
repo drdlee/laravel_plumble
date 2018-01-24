@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
 
         App\Profile::create([
           'user_id' => $user->id,
-          'avatar' => 'uploads/avatar/avatar1.jpg',
+          'avatar' => 'uploads/avatars/avatar1.jpg',
           'about' => 'Bacon ipsum dolor amet kevin brisket tongue cow shoulder pork pastrami chicken swine ham hock shankle. Fatback buffalo beef rump boudin flank chicken corned beef. Shankle pancetta short loin.',
           'facebook' => 'facebook.com',
           'youtube' => 'youtube.com'
