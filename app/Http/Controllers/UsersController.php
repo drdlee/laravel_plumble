@@ -9,6 +9,9 @@ use Session;
 
 class UsersController extends Controller
 {
+    public function __construct(){
+      $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -100,5 +103,21 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function makeAdmin($id){
+      $user = User::find($id);
+      $user->admin = 1;
+      $user->save();
+      Session::flash('success', 'User permission changed');
+      return redirect()->back();
+    }
+
+    public function notAdmin($id){
+      $user = User::find($id);
+      $user->admin = 0;
+      $user->save();
+      Session::flash('success', 'User permission changed');
+      return redirect()->back();
     }
 }

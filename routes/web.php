@@ -50,5 +50,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
   Route::get('/user', 'UsersController@index')->name('user.index');
   Route::get('/user/create', 'UsersController@create')->name('user.create');
   Route::post('/user', 'UsersController@store')->name('user.store');
+  Route::get('/user/admin/{id}', 'UsersController@makeAdmin')->name('user.admin');
+  Route::get('/user/not-admin/{id}', 'UsersController@notAdmin')->name('user.not.admin');
 
 });

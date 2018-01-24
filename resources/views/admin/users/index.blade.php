@@ -18,6 +18,13 @@
                 <td> <img src="{{ asset($user->profile->avatar) }}" alt="{{ $user->name }}" width="60px" height="60px" style="border-radius:50%;"> </td>
                 <td>{{ $user->name }}</td>
                 <td>
+                @if ($user->admin)
+                  <a href="{{route('user.not.admin', ['id'=>$user->id])}}" class="btn btn-xs btn-danger">remove admin</a>
+                @else
+                  <a href="{{route('user.admin', ['id'=>$user->id])}}" class="btn btn-xs btn-success">make admin</a>
+                @endif
+                </td>
+                <td>
                   {{-- <a href="{{route('post.edit', ['id'=> $post->id])}}" class="btn btn-xs btn-info">edit</a>
                   <a href="{{route('post.delete', ['id'=> $post->id])}}" class="btn btn-xs btn-danger">trash</a> --}}
                 </td>
