@@ -42,7 +42,7 @@
 
                               <span class="category">
                                   <i class="seoicon-tags"></i>
-                                  <a href="#">{{ $post->category->name }}</a>
+                                  <a href="{{route('singleCategory', ['id'=>$post->category->id])}}">{{ $post->category->name }}</a>
                               </span>
 
                           </div>
@@ -54,7 +54,7 @@
                               <div class="widget w-tags">
                                   <div class="tags-wrap">
                                       @foreach ($post->tags as $tag)
-                                        <a href="#" class="w-tags-item">{{$tag->tag}}</a>
+                                        <a href="{{route('singleTag', ['id'=>$tag->id])}}" class="w-tags-item">{{$tag->tag}}</a>
                                       @endforeach
                                   </div>
                               </div>
@@ -186,7 +186,7 @@
 
                           <div class="tags-wrap">
                               @foreach ($tags as $tag)
-                                <a href="#" class="w-tags-item">{{$tag->tag}}</a>
+                                <a href="{{route('singleTag', ['id'=>$tag->id])}}" class="w-tags-item">{{$tag->tag}}</a>
                               @endforeach
                           </div>
                       </div>

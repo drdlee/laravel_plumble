@@ -85,7 +85,7 @@
 
                                         <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="#">{{ $latestPost->category->name }}</a>
+                                            <a href="{{route('singleCategory', ['id'=>$latestPost->category->id])}}">{{ $latestPost->category->name }}</a>
                                         </span>
 
                                         <span class="post__comments">
@@ -141,7 +141,7 @@
 
                                         <span class="category">
                                             <i class="seoicon-tags"></i>
-                                            <a href="#">{{ $latest2->category->name }}</a>
+                                            <a href="{{route('singleCategory', ['id'=>$latest2->category->id])}}">{{ $latest2->category->name }}</a>
                                         </span>
 
                                         <span class="post__comments">
@@ -169,7 +169,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="heading">
-                                <h4 class="h1 heading-title">{{ $section1->name}}</h4>
+                                <h4 class="h1 heading-title"><a href="{{route('singleCategory', ['id'=>$section1->id])}}">{{ $section1->name}}</a></h4>
                                 <div class="heading-line">
                                     <span class="short-line"></span>
                                     <span class="long-line"></span>
@@ -199,7 +199,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                             <div class="heading">
-                                <h4 class="h1 heading-title">{{ $section2->name}}</h4>
+                                <h4 class="h1 heading-title"><a href="{{route('singleCategory', ['id'=>$section2->id])}}">{{ $section2->name}}</a></h4>
                                 <div class="heading-line">
                                     <span class="short-line"></span>
                                     <span class="long-line"></span>
@@ -308,21 +308,7 @@
 
 <!-- Overlay Search -->
 
-<div class="overlay_search">
-    <div class="container">
-        <div class="row">
-            <div class="form_search-wrap">
-                <form>
-                    <input class="overlay_search-input" placeholder="Type and hit Enter..." type="text">
-                    <a href="#" class="overlay_search-close">
-                        <span></span>
-                        <span></span>
-                    </a>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+@include('includes.search')
 
 <!-- End Overlay Search -->
 
