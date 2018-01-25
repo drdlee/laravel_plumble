@@ -26,6 +26,13 @@ Route::get('/result', function(){
     ->with('query', request('query'));
 })->name('result');
 
+Route::post('/subscribe', function(){
+  $email = request('email');
+  Newsletter::subscribe($email);
+  return redirect()->back();
+});
+
+
 Auth::routes();
 
 Route::get('/test', function(){
